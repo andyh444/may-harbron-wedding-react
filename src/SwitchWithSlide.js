@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Slider from "./Slider";
+import Slider from "./Slider/slider2";
 
 class SlideOut extends React.Component {
   constructor(props) {

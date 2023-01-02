@@ -1,7 +1,7 @@
 .animatable {
     background: inherit;
     will-change: transform;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
   
   .animatable.prepare {
@@ -12,29 +12,24 @@
     opacity: 0;
   }
   
-  .animatable.prepare.from.left {
-    transform: translateX(-110%);
+  .animatable.prepare.from.left,
+  .animatable.prepare.from.right,
+  .animatable.prepare.to.left,
+  .animatable.prepare.to.right,
+  .animatable:not(.prepare).to.left,
+  .animatable:not(.prepare).to.right {
+    transform-origin: 50% 0%;
+    transform: scale(0, 1.2);
+    opacity: 0;
   }
-  .animatable.prepare.from.right {
-    transform: translateX(110%);
-  }
-  .animatable.prepare.to.left {
-    transform: translateX(-1px);
-  }
-  .animatable.prepare.to.right {
-    transform: translateX(1px);
-  }
-  
+
   .animatable:not(.prepare).to {
     pointer-events: none;
   }
-  .animatable:not(.prepare).to.left {
-    transform: translateX(-110%);
-  }
-  .animatable:not(.prepare).to.right {
-    transform: translateX(110%);
-  }
+
   .animatable:not(.prepare).from {
-    transform: translateX(0);
+    transform-origin: 0 50%;
+    transform: scale(1);
+    opacity: 1;
   }
   
