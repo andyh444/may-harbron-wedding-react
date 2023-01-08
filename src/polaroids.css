@@ -84,7 +84,7 @@ body {
   .polaroid[data-status="zoomAndCentre"], .polaroid[data-status="zoomAndCentrePostFlip"], .polaroid[data-status="flip"] {
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%) rotate(0deg) scale(2);
+      transform: translate(-50%, -50%) rotate(0deg) scale(3.5);
       z-index: 500;
   }
   

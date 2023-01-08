@@ -45,7 +45,7 @@ function App() {
           <SwitchWithSlide>
             <Switch location={location}>
               <Route
-                exact path={["/", "/Home", "/Evening/Home"]}
+                exact path={["/", "/Home", "/Evening", "/Evening/Home"]}
                 render={(props) => <HomePage isEvening={isEvening} />}
               />
               <Route
@@ -54,11 +54,11 @@ function App() {
               />
               <Route
                 exact path={["/Info", "/Evening/Info"]}
-                render={(props) => <WeddingInfo />}
+                render={(props) => <WeddingInfo isEvening={isEvening} />}
               />
               <Route
                 exact path={["/RSVP", "/Evening/RSVP"]}
-                render={(props) => <RSVP />}
+                render={(props) => <RSVP isEvening={isEvening} />}
               />
             </Switch>
           </SwitchWithSlide>

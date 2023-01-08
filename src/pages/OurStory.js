@@ -149,12 +149,15 @@ function OurStory() {
 
     return (
         <div className="page">
-            <p>Click on a polaroid to zoom in. Click it again to flip it over.</p>
+            <p>We wanted to include a page about our story. I thought, hey, a picture is worth a thousand words so I just chucked some of our old polaroids on the table.</p>
+            <p>I wrote on the back of each so you know what's going on.</p>
+            <p>These polaroids are virtual, so please do not try to grab them off the screen - it won't work and you may hurt yourself. Instead, click on one to zoom it in, and click on it again to flip it over.</p>
             <div className="polaroidgroup" >
                 <div className="blackoverlay" onClick={blackoverlayclick}>
                 </div>
                 { getPolaroids() }
             </div>
+            <p>(Spoiler alert: These aren't really polaroids)</p>
         </div>
     );
 }

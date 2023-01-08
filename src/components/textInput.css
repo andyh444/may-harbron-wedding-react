@@ -2,6 +2,7 @@
     border: none;
     margin: 3px;
     background-color: rgb(250, 250, 250);
+    width: 200px;
 }
 
 .textInput::placeholder {

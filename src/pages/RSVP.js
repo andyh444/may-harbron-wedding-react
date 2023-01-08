@@ -3,7 +3,7 @@ import "./RSVP.css"
 import TextInput from "../components/textInput";
 import EucalyptusHeader from "../components/eucalyptusHeader";
 
-function RSVP() {
+function RSVP({ isEvening }) {
 	const SHOWING_FORM = "showingForm";
 
 	const nameRef = useRef("");
@@ -14,6 +14,8 @@ function RSVP() {
 	const [currentFormStatus, updateFormStatus] = useState(SHOWING_FORM);
 	const [currentValidationMessage, updateValidationMessage] = useState("");
 
+	console.log("isEvening", isEvening);
+
 	async function sendRSVP() {
 		if (!validate()) {
 			return;
@@ -22,13 +24,15 @@ function RSVP() {
 		console.log(noCheckedRef.current.checked);
 
 		const canAttend = yesCheckedRef.current.checked && !noCheckedRef.current.checked;
-
+		
+		// TODO: Add evening/day guest info
 		const newEntry = {
 			name: nameRef.current.value,
 			canAttend: canAttend,
 			dietaryRequirements: dietaryRef.current.value,
 			comments: otherCommentsRef.current.value,
-			timeStamp: new Date()
+			timeStamp: new Date(),
+			isEvening: isEvening
 		}
 		console.log("new Entry:", newEntry);
 		try {
@@ -89,7 +93,7 @@ function RSVP() {
 					<tbody>
 						<tr>
 							<td><label>What are your name(s)?<span className="asterisk">*</span></label></td>
-							<td><TextInput reference={nameRef} placeholder="What's your name?"></TextInput></td>
+							<td><TextInput reference={nameRef} placeholder="E.g. Andy Harbron and Molly May"></TextInput></td>
 						</tr>
 						<tr>
 							<td><label>Can you attend?<span className="asterisk">*</span></label></td>
@@ -100,11 +104,11 @@ function RSVP() {
 						</tr>
 						<tr>
 							<td><label>Any dietary requirements?</label></td>
-							<td><TextInput reference={dietaryRef} placeholder="Dietary Requirements?"></TextInput></td>
+							<td><TextInput reference={dietaryRef} placeholder="E.g. Vegan, allergies, etc"></TextInput></td>
 						</tr>
 						<tr>
 							<td><label>Any other comments?</label></td>
-							<td><TextInput reference={otherCommentsRef} placeholder="comments"></TextInput></td>
+							<td><TextInput reference={otherCommentsRef} placeholder="E.g. song requests"></TextInput></td>
 						</tr>
 					</tbody>
 				</table>

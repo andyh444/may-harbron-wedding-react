@@ -31,12 +31,14 @@ export default class Slider extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    console.log("componentWillRecieveProps", newProps, this.props, this.state);
     if (newProps.position !== this.props.position) {
       this.startAnimation(newProps.position, newProps.animationCallback);
     }
   }
 
   startAnimation(position, animationCallback) {
+    console.log("startAnimation in");
     const noAnimate = position === Slider.CENTER;
     const animatingOut = [Slider.TO_LEFT, Slider.TO_RIGHT].includes(position);
     const currentlyIn = [
@@ -57,7 +59,7 @@ export default class Slider extends React.Component {
     this._animationCallback = this.postPrepareAnimation;
     // in case the transition fails, we also post-prepare after some ms (whichever
     // runs first should cancel the other)
-    this._postPrepareTimeout = setTimeout(this.postPrepareAnimation, 500);
+    this._postPrepareTimeout = setTimeout(this.postPrepareAnimation, 250);
 
     this.setState({
       animating: true,
@@ -80,6 +82,8 @@ export default class Slider extends React.Component {
     // the Slider transitions the `transform` property. Any other transitions
     // that occur on the element we can just ignore.
     if (e.propertyName !== "transform") return;
+
+    console.log("on transition end");
 
     const callback = this._animationCallback;
     delete this._animationCallback;
