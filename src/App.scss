@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 body {
 	margin: 0;
 	background-image: url('Images\\papertexture2.jpg');
@@ -62,18 +64,20 @@ h2 {
 	margin: 32px;
 }
 
+$headerColour: rgb(114,150,109);
+
 .header, .headerItems, .date, button {
-	background-color: rgb(114,150,109);
+	background-color: $headerColour;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: rgb(95, 126, 91);
+    background-color: color.scale($headerColour, $lightness: -20%);
 }
 
 button:active {
     cursor: pointer;
-    background-color: rgb(62, 82, 59);
+    background-color: color.scale($headerColour, $lightness: -40%);
 }
 
 button {

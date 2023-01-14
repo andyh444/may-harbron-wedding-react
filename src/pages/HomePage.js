@@ -1,4 +1,3 @@
-import "../App.css"
 import React from "react";
 import invite from "../Images/Invitep1 day.jpg"
 import eveningInvite from "../Images/Invitep2 eve.jpg"

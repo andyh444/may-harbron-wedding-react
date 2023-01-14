@@ -1,4 +1,4 @@
-import "./App.css"
+import "./App.scss"
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import logo from "./Images/AndyAndMollySmall.jpg"
 import SwitchWithSlide from "./SwitchWithSlide";
