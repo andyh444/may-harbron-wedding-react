@@ -30,31 +30,31 @@
     [
         {
             "linkUrl": "https://www.newforestcampsite.com/the-old-airfield/",
-            "imageUrl": "https://images.campsites.co.uk/campsite/30126/33c41468-6e47-4a5c-8601-00d411ba6bf5/840/560/either/the-old-airfield.jpg",
+            "imageUrl": "..//Images//OldAirfield.jpg",
             "name": "The Old Airfield",
             "noOfMiles": 5
         },
         {
             "linkUrl": "https://www.forestbelltents.com/",
-            "imageUrl": "https://www.forestbelltents.com/images/resources/lake/sopley_lake.jpg",
+            "imageUrl": "..//Images//ForestBellTents.jpg",
             "name": "Forest Bell Tents",
             "noOfMiles": 2
         },
         {
             "linkUrl": "https://www.forestyurts.com/",
-            "imageUrl": "https://images.campsites.co.uk/campsite/28478/34998463-3d4b-49bd-9012-2c8308e22253/840/560/either/forest-yurts.jpg",
+            "imageUrl": "..//Images//ForestYurts.jpg",
             "name": "Forest Yurts",
             "noOfMiles": 1
         },
         {
             "linkUrl": "https://www.shorefield.co.uk/holidays/locations/oakdene-forest-park",
-            "imageUrl": "https://images.campsites.co.uk/campsite/15332/f6e78aaf-321f-4962-8b31-4ef9607c5951/840/560/either/oakdene-forest-park.jpg",
+            "imageUrl": "..//Images//OakdeneForestPark.jpg",
             "name": "Oakdene Forest Park",
             "noOfMiles": 2
         },
         {
             "linkUrl": "https://www.caravan-sites.co.uk/",
-            "imageUrl": "https://images.campsites.co.uk/campsite/15330/45505e98-d11c-4f30-953b-83b51040a94b/840/560/either/harrow-wood-farm-caravan-park.jpg",
+            "imageUrl": "..//Images//HarrowWoodFarm.jpg",
             "name": "Harrow Wood Farm",
             "noOfMiles": 3
         }

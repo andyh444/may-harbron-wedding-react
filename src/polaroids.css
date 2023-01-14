@@ -22,6 +22,8 @@ body {
   
       overflow: hidden;
       text-align: left;
+
+      border: red solid 1px;
   }
   
   .polaroid {
@@ -134,5 +136,4 @@ body {
       top:50%;
       width: 75%;
       transform: translate(15%, -50%) rotate(20deg)  scale(-1, 1);
-      border: red 1px solid;
   }

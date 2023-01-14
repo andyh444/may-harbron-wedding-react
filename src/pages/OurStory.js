@@ -22,11 +22,11 @@ function OurStory() {
     }
 
     function getPolaroidPositions() {
-        var newPolaroidsLeft = Array(polaroidsList.Polaroids.length);
-        for (var i = 0; i < newPolaroidsLeft.length; i++) {
-            newPolaroidsLeft[i] = 20 + 60 * Math.random();
+        var newPolaroidsPositions = Array(polaroidsList.Polaroids.length);
+        for (var i = 0; i < newPolaroidsPositions.length; i++) {
+            newPolaroidsPositions[i] = 20 + 60 * Math.random();
         }
-        return newPolaroidsLeft;
+        return newPolaroidsPositions;
     }
 
     function getPolaroids() {
@@ -34,8 +34,8 @@ function OurStory() {
             return <Polaroid
                 key={i}
                 index={i}
-                left={polaroidLeftPositions[i]}
-                top={polaroidTopPositions[i]}
+                left={x.left ?? polaroidLeftPositions[i]}
+                top={x.top ?? polaroidTopPositions[i]}
                 rotation={polaroidRotations[i]}
                 polaroidData={x}
                 onEnter = {() => polaroidEnter(i)}

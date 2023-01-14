@@ -27,6 +27,36 @@ function WeddingInfo({isEvening}) {
 		);
 	}
 
+	function getDayFoodInfo() {
+		if (!isEvening) {
+		return [
+				<div id="canapes" className="menubox">
+					<h3>Canapes</h3>
+					<ul>
+						<li>Chipolatas (GF)</li><br/>
+						<li>Spring rolls (Vg)</li><br/>
+						<li>Goat's cheese mini waffle cones (V)</li><br/>
+						<li>Popcorn chicken</li><br/>
+						<li>Crab scones</li><br/>
+						<li>Stuffed new potatoes (V)</li>
+					</ul>
+				</div>,
+				<div id="breakfast" className="menubox">
+					<h3>Breakfast</h3>
+					<ul>
+						<li>Pan-roasted chicken wrapped in smoked pancetta</li>
+						<br/><span>-OR-</span><br/><br/>
+						<li>Stuffed sweet peppers (Vg)</li>
+						<br/>
+						<li>Summer trifle to finish</li>
+						<br/>
+						<li>For kids: Chicken nuggets, chips and peas</li>
+					</ul>
+				</div>
+		]
+		}
+	}
+
     return (
         <div className="page">
 				{isEvening ? getReceptionInfo() : getCeremonyInfo()}
@@ -50,29 +80,7 @@ function WeddingInfo({isEvening}) {
 				<p>All food will be provided by the <a href="http://theperfectpig.co.uk/" target="_blank" rel="noopener noreferrer">Perfect Pig</a></p>
 				<img src={perfectPigImage} alt="" />
 				<br />
-				<div id="canapes" className="menubox">
-					<h3>Canapes</h3>
-					<ul>
-						<li>Chipolatas (GF)</li><br/>
-						<li>Spring rolls (Vg)</li><br/>
-						<li>Goat's cheese mini waffle cones (V)</li><br/>
-						<li>Popcorn chicken</li><br/>
-						<li>Crab scones</li><br/>
-						<li>Stuffed new potatoes (V)</li>
-					</ul>
-				</div>
-				<div id="breakfast" className="menubox">
-					<h3>Breakfast</h3>
-					<ul>
-						<li>Pan-roasted chicken wrapped in smoked pancetta</li>
-						<br/><span>-OR-</span><br/><br/>
-						<li>Stuffed sweet peppers (Vg)</li>
-						<br/>
-						<li>Summer trifle to finish</li>
-						<br/>
-						<li>For kids: Chicken nuggets, chips and peas</li>
-					</ul>
-				</div>
+				{getDayFoodInfo()}
 				<div id="evening" className="menubox">
 					<h3>Evening</h3>
 					<ul>
@@ -117,8 +125,10 @@ function WeddingInfo({isEvening}) {
 				<p>Unfortunately camper vans are not allowed overnight</p>
 				<br/>
 				<EucalyptusHeader title="Gifts" />
-				<p>As we already live together, we've already accumulated more items than we have storage for</p>
-				<p>If you would like to give a gift, we are saving for a house deposit</p>
+				<p>As we already live together, and Andy is a hoarder, we've already accumulated more items than we have storage for</p>
+				<p>If you would like to give a gift, we are saving for our honeymoon, and any contribution you can give towards that we will be tremendously grateful for</p>
+				<br/>
+				<br/>
 			</div>
     )
 }
