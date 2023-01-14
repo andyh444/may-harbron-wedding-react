@@ -127,10 +127,12 @@ body {
   
   .polaroidback {
       font-family: Permanent Marker;
-      font-size: 2vw;
+      font-size: min(2vw, 18px);
       letter-spacing: -0.1vw;
       color: rgba(81,44,107,0.8);
       position:absolute;
       top:50%;
-      transform: translate(0%, -50%) rotate(30deg) scale(-1, 1);
+      width: 75%;
+      transform: translate(15%, -50%) rotate(20deg)  scale(-1, 1);
+      border: red 1px solid;
   }

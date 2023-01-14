@@ -3,6 +3,7 @@ import perfectPigImage from "../Images/perfectpiglogo.png"
 import EucalyptusHeader from "../components/eucalyptusHeader";
 import HotelCard from "../components/hotelCard";
 import "./WeddingInfo.css"
+import placesToStay from "../placesToStay.json"
 
 function WeddingInfo({isEvening}) {
 
@@ -85,54 +86,29 @@ function WeddingInfo({isEvening}) {
 				<p>As Sopley Mill is on the edge of the New Forest, there is no shortage of places to stay in the area</p>
 				<p>Some handy nearby hotels are:</p>
 				<div className="hotelCards">
-					<HotelCard
-						linkUrl="https://www.premierinn.com/gb/en/hotels/england/dorset/christchurch/christchurch-west.html"
-						imageUrl="https://www.premierinn.com/content/dam/pi/websites/hotelimages/gb/en/C/CHRBAI/xCHRBAI,P202.jpg.pagespeed.ic.VgjjJl5zAp.webp"
-						name="Premier Inn Christchurch (West)"
-						noOfMiles={4} />
-					<HotelCard
-						linkUrl="https://www.premierinn.com/gb/en/hotels/england/dorset/christchurch/christchurch-east.html"
-						imageUrl="https://www.premierinn.com/content/dam/pi/websites/hotelimages/gb/en/C/CHRSOM/xCHRSOM,P201.jpg.pagespeed.ic.MMEgQhj_Ri.webp"
-						name="Premier Inn Christchurch (East)"
-						noOfMiles={4} />
-					<HotelCard
-						linkUrl="https://www.fishermanshauntdorset.co.uk/"
-						imageUrl="https://www.fishermanshauntdorset.co.uk/-/media/sites/pubs-and-hotels/f/the-fishermans-haunt-_-p208/images/gallery-2022/tsp-170518-758.ashx"
-						name="The Fisherman's Haunt"
-						noOfMiles={1} />
-					<HotelCard
-						linkUrl="https://www.thebearofburton.co.uk/"
-						imageUrl="https://www.thebearofburton.co.uk/-/media/sites/pubs-and-hotels/b/the-bear-of-burton-_-p200/images/gallery-2022/bearofburton-01.ashx"
-						name="The Bear of Burton"
-						noOfMiles={2.5} />
+					{
+					placesToStay.Hotels.map(x => {
+						return <HotelCard
+							linkUrl = {x.linkUrl}
+							imageUrl = {x.imageUrl}
+							name = {x.name}
+							noOfMiles = {x.noOfMiles}
+						/>
+					})
+					}
 				</div>
 				<p>There are also many campsites, including:</p>
 				<div className="hotelCards">
-					<HotelCard
-						linkUrl="https://www.newforestcampsite.com/the-old-airfield/"
-						imageUrl="https://images.campsites.co.uk/campsite/30126/33c41468-6e47-4a5c-8601-00d411ba6bf5/840/560/either/the-old-airfield.jpg"
-						name="The Old Airfield"
-						noOfMiles={5} />
-					<HotelCard
-						linkUrl="https://www.forestbelltents.com/"
-						imageUrl="https://www.forestbelltents.com/images/resources/lake/sopley_lake.jpg"
-						name="Forest Bell Tents"
-						noOfMiles={1.8} />
-					<HotelCard
-						linkUrl="https://www.forestyurts.com/"
-						imageUrl="https://images.campsites.co.uk/campsite/28478/34998463-3d4b-49bd-9012-2c8308e22253/840/560/either/forest-yurts.jpg"
-						name="Forest Yurts"
-						noOfMiles={1.1} />
-					<HotelCard
-						linkUrl="https://www.shorefield.co.uk/holidays/locations/oakdene-forest-park"
-						imageUrl="https://images.campsites.co.uk/campsite/15332/f6e78aaf-321f-4962-8b31-4ef9607c5951/840/560/either/oakdene-forest-park.jpg"
-						name="Oakdene Forest Park"
-						noOfMiles={1.8} />
-					<HotelCard
-						linkUrl="https://www.caravan-sites.co.uk/"
-						imageUrl="https://images.campsites.co.uk/campsite/15330/45505e98-d11c-4f30-953b-83b51040a94b/840/560/either/harrow-wood-farm-caravan-park.jpg"
-						name="Oakdene Forest Park"
-						noOfMiles={2.9} />
+				{
+					placesToStay.Campsites.map(x => {
+						return <HotelCard
+							linkUrl = {x.linkUrl}
+							imageUrl = {x.imageUrl}
+							name = {x.name}
+							noOfMiles = {x.noOfMiles}
+						/>
+					})
+					}
 				</div>
 				<br />
 				<EucalyptusHeader title="Parking" />
