@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8998a646.css",
-    "main.js": "/static/js/main.429fe8b1.js",
+    "main.css": "/static/css/main.e8e67760.css",
+    "main.js": "/static/js/main.00076d91.js",
     "static/media/Eucalyptus.png": "/static/media/Eucalyptus.473b8b47abe413de0cb2.png",
     "static/media/main-image-mill.jpg": "/static/media/main-image-mill.0f8f5cc078d4133f0ddb.jpg",
     "static/media/Invitep1 day.jpg": "/static/media/Invitep1 day.46fce97c615e21d277e9.jpg",
@@ -11,11 +11,11 @@
     "static/media/topTear.png": "/static/media/topTear.cb09fc5814e43a1c7368.png",
     "static/media/perfectpiglogo.png": "/static/media/perfectpiglogo.3661c2b09d9a520e2eb5.png",
     "index.html": "/index.html",
-    "main.8998a646.css.map": "/static/css/main.8998a646.css.map",
-    "main.429fe8b1.js.map": "/static/js/main.429fe8b1.js.map"
+    "main.e8e67760.css.map": "/static/css/main.e8e67760.css.map",
+    "main.00076d91.js.map": "/static/js/main.00076d91.js.map"
   },
   "entrypoints": [
-    "static/css/main.8998a646.css",
-    "static/js/main.429fe8b1.js"
+    "static/css/main.e8e67760.css",
+    "static/js/main.00076d91.js"
   ]
 }
