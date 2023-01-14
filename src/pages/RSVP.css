@@ -20,23 +20,3 @@ td {
 .asterisk {
     color: rgb(223, 70, 70);
 }
-
-button {
-    background-color: rgb(114,150,109);
-    transition: background-color 0.3s;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 18px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: rgb(95, 126, 91);
-}
-
-button:active {
-    cursor: pointer;
-    background-color: rgb(62, 82, 59);
-}
