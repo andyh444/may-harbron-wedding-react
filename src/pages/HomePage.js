@@ -19,13 +19,13 @@ function HomePage({isEvening}) {
             message = "the wedding has happened already! What are you doing back here?";
         }
         else if (daysToGo === 0) {
-            message = "we're saying I do today!";
+            message = "We will be saying our vows today!";
         }
         else if (daysToGo === 1) {
-            message = `we're saying I do tomorrow!`;
+            message = `We will be saying our vows tomorrow!`;
         }
         else {
-            message = `we're saying I do in ${daysToGo} days!`;
+            message = `We will be saying our vows in ${daysToGo} days!`;
         }
         return message;
     }
@@ -34,7 +34,9 @@ function HomePage({isEvening}) {
     <div className="page">
         <img className="InviteImage" alt="" src={isEvening ? eveningInvite : invite} />
         <div className="HomePageText">
-            <p>Hello, we're Andy and Molly, and {getNoOfDaysText()}</p>
+            <p>Hello there</p>    
+            <p>If you are here then chances are you've just received one of these long awaited invitations.</p>
+            <p>{getNoOfDaysText()}</p>
             {
                 !isEvening && <p>If you're an evening guest, you need the evening website, <Link to="/Evening/Home">here</Link></p>
             }
@@ -42,12 +44,12 @@ function HomePage({isEvening}) {
                 isEvening && <p>If you're a day guest, you need the day website, <Link to="/Home">here</Link></p>
             }
             <br/>
-            <p>All the details for the wedding can be found under "Wedding Info"</p>
+            <p>All the details for the wedding can be found under "Wedding Info"</p> { /* TODO: Link */ }
             <br/>
-            <p>If you are doing a confuse you can contact us here:</p>
+            <p></p>
+            <br />
+            <p>If you have any questions that aren't answered on the site, please feel free to contact us at:</p>
             <p>mayharbronwedding@gmail.com</p>
-            <p><strong>Andy:</strong> 07000000000</p>
-            <p><strong>Molly:</strong> 07000000000</p>
         </div>
     </div>);
 }

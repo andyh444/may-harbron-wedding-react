@@ -11,7 +11,7 @@ function WeddingInfo({isEvening}) {
 		return (
 			<div>
 				<EucalyptusHeader title="Ceremony" />
-				<p>Ceremony to start at 1 pm. Please aim to be there by 12:30.</p>
+				<p>Ceremony to start at 13:00. Please aim to be there by 12:30 at the latest.</p>
 				<p>Ceremony and Reception to all be held at Sopley Mill:</p>
 			</div>
 		);
@@ -76,19 +76,17 @@ function WeddingInfo({isEvening}) {
 					</div>
 				</div>
 				<p>To get there: Follow the A31 to Ringwood, then take the B3347 to Sopley</p>
-				<EucalyptusHeader title="Food" />
-				<p>All food will be provided by the <a href="http://theperfectpig.co.uk/" target="_blank" rel="noopener noreferrer">Perfect Pig</a></p>
-				<img src={perfectPigImage} alt="" />
-				<br />
-				{getDayFoodInfo()}
-				<div id="evening" className="menubox">
-					<h3>Evening</h3>
-					<ul>
-						<li>Wood-fired pizza bar</li>
-					</ul>
-				</div>
-				<p>GF - gluten free, Vg - vegan, V - vegetarian</p>
-				<p>TODO: Mention alcohol</p>
+				<EucalyptusHeader title="Parking" />
+				<p>Sopley mill has a car park on site.</p>
+				<p>You can leave your car overnight but make sure to pick it up by 11am the next day.</p>
+				<p>Unfortunately camper vans are not allowed overnight.</p>
+				<br/>
+				<EucalyptusHeader title="Food and Drink" />
+				<p>The ceremony will be followed by canapes and a selection of drinks: Pimm's, Beer and squash for the children</p>
+				<p>If this doesn't tickle your fancy, the pay bar will also be open until the end of the night<span className="asterisk">*</span></p>
+				<p>The wedding breakfast will follow shortly after canapes and photos, and there will a pizza bar in the evening.</p>
+				<p>Please see the RSVP form where you can enter any dietary requirements you may have</p>
+				<p><span className="asterisk">*</span><i>Please note the bars are well stocked for anything you might like to drink. Please refrain from bringing your own alcohol or we'll have to pass the fine on to you</i></p>
 				<br />
 				<EucalyptusHeader title="Where to stay" />
 				<p>As Sopley Mill is on the edge of the New Forest, there is no shortage of places to stay in the area</p>
@@ -119,11 +117,6 @@ function WeddingInfo({isEvening}) {
 					}
 				</div>
 				<br />
-				<EucalyptusHeader title="Parking" />
-				<p>Sopley mill has a car park on site.</p>
-				<p>You can leave your car overnight but make sure to pick it up by 11 am!</p>
-				<p>Unfortunately camper vans are not allowed overnight</p>
-				<br/>
 				<EucalyptusHeader title="Gifts" />
 				<p>As we already live together, and Andy is a hoarder, we've already accumulated more items than we have storage for</p>
 				<p>If you would like to give a gift, we are saving for our honeymoon, and any contribution you can give towards that we will be tremendously grateful for</p>
