@@ -57,8 +57,8 @@ function App() {
                 render={(props) => <WeddingInfo isEvening={isEvening} />}
               />
               <Route
-                exact path={["/RSVP", "/Evening/RSVP"]}
-                render={(props) => <RSVP isEvening={isEvening} />}
+                exact path={["/RSVP", "/Evening/RSVP", "/RSVP/:name", "/Evening/RSVP/:name"]}
+                render={(props) => <RSVP props={props} isEvening={isEvening} />}
               />
             </Switch>
           </SwitchWithSlide>

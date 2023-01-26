@@ -35,16 +35,16 @@ function HomePage({isEvening}) {
         <img className="InviteImage" alt="" src={isEvening ? eveningInvite : invite} />
         <div className="HomePageText">
             <p>Hello there</p>    
-            <p>If you are here then chances are you've just received one of these long awaited invitations.</p>
+            <p>If you are here then chances are you've just received one of these long awaited invitations. If not, I don't what you're doing here, but please leave.</p>
             <p>{getNoOfDaysText()}</p>
             {
-                !isEvening && <p>If you're an evening guest, you need the evening website, <Link to="/Evening/Home">here</Link></p>
+                !isEvening && <p>If you're an evening guest, you need the <Link to="/Evening/Home">evening website</Link></p>
             }
             {
-                isEvening && <p>If you're a day guest, you need the day website, <Link to="/Home">here</Link></p>
+                isEvening && <p>If you're a day guest, you need the <Link to="/Home">day website</Link></p>
             }
             <br/>
-            <p>All the details for the wedding can be found under "Wedding Info"</p> { /* TODO: Link */ }
+            <p>All the details for the wedding can be found under <Link to="Info">{isEvening ? "Reception Info" :"Wedding Info"}</Link></p>
             <br/>
             <p></p>
             <br />

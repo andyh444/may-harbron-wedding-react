@@ -16,6 +16,34 @@ h2 {
 	font-size: 48px;
 }
 
+a {
+	text-decoration: none;
+}
+
+th {
+	font-size: 120%;
+	text-shadow: 0 0 1px black;
+}
+
+td {
+	transform-origin: 0 0;
+	animation-name: rowFadeIn;
+	animation-duration: 0.2s;
+	animation-iteration-count: 1;
+}
+
+
+@keyframes rowFadeIn {
+	from {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+	to {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
+
 .page p {
 	padding: 0 10%;
 }
@@ -87,6 +115,7 @@ button {
     padding: 12px 24px;
     border-radius: 18px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+	margin: 12px;
 }
 
 .headerImage {

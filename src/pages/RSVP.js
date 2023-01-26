@@ -1,10 +1,16 @@
 import React, { useRef, useState } from "react";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import "./RSVP.css"
 import TextInput from "../components/textInput";
 import EucalyptusHeader from "../components/eucalyptusHeader";
+import NamesTable from "../components/RSVP/namesTable";
+import DietTable from "../components/RSVP/dietTable";
+import SendRequest from "../components/RSVP/sendRequest";
 
-function RSVP({ isEvening }) {
+function RSVP({ props, isEvening }) {
 	const SHOWING_FORM = "showingForm";
+
+	const history = useHistory();
 
 	const nameRef = useRef("");
 	const yesCheckedRef = useRef(false);
@@ -14,7 +20,12 @@ function RSVP({ isEvening }) {
 	const [currentFormStatus, updateFormStatus] = useState(SHOWING_FORM);
 	const [currentValidationMessage, updateValidationMessage] = useState("");
 
+	const [currentNames, setCurrentNames] = useState(null);
+	const [currentRSVPRequest, setCurrentRSVPRequest] = useState(null);
+	const [currentStep, setCurrentStep] = useState(1);
+
 	console.log("isEvening", isEvening);
+	console.log("match", props.match.params.name);
 
 	async function sendRSVP() {
 		if (!validate()) {
@@ -84,6 +95,16 @@ function RSVP({ isEvening }) {
 		)
 	}
 
+	function next() {
+		var location = "/";
+		if (isEvening) {
+			location += "Evening/";
+		}
+		location += "RSVP/";
+		
+		history.push(location + nameRef.current.value);
+	}
+
 	function getInputForm() {
 		return (
 			<div>
@@ -113,14 +134,47 @@ function RSVP({ isEvening }) {
 					</tbody>
 				</table>
 				<p className="validationMessage">{currentValidationMessage}</p>
-				<button onClick={sendRSVP}>Submit</button>
+				<Link to={"/RSVP/"+nameRef.current.value}>Next</Link>
 			</div>
 		)
+	}
+
+	function submitNames(names) {
+		console.log("submitting names", names);
+		setCurrentStep(s => 2);
+		setCurrentNames(n => names);
+	}
+
+	function goBack(names) {
+		console.log("in go back");
+		setCurrentStep(s => 1);
+	}
+
+	function submitRSVP(names) {
+		names.isEvening = isEvening;
+		names.timeStamp = new Date();
+		console.log("names with evening", names);
+		setCurrentRSVPRequest(n => names);
+		setCurrentStep(s => 3);
+	}
+
+	function getContentsFromStep() {
+		switch (currentStep) {
+			case 1:
+				return <NamesTable initialNames={currentNames} submitNames={submitNames}></NamesTable>
+			case 2: 
+				return <DietTable names={currentNames} submitRSVP={submitRSVP} goBack={goBack}></DietTable>;
+			case 3:
+				return <SendRequest request={currentRSVPRequest}></SendRequest>
+		}
 	}
 
     return (
         <div className="page">
 			<EucalyptusHeader title="RSVP" />
+			{
+				getContentsFromStep()
+			}
 			{getContents()}
 			{/*<p>Please enter your details in the form below, or send your RSVP to <a href="mailto:mayharbronwedding@gmail.com">mayharbronwedding@gmail.com</a></p>
 			<iframe
@@ -132,4 +186,4 @@ function RSVP({ isEvening }) {
     );
 }
 
-export default RSVP
+export default withRouter(RSVP)
