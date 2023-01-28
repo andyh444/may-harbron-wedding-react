@@ -75,6 +75,8 @@ function NamesTable({ initialNames, submitNames }) {
     console.log("initialNames", initialNames);
     return (
         <div>
+            <p>Please enter your details in the form below, or send your RSVP to <a href="mailto:mayharbronwedding@gmail.com">mayharbronwedding@gmail.com</a></p>
+            <p>Step 1: For each person on the invitation, add their name into the Person field and tick if they can attend. Dietary requirements can be specified in the next step</p>
             <table>
                 <tbody>
                     <tr>

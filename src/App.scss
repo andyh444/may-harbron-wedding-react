@@ -94,8 +94,18 @@ td {
 
 $headerColour: rgb(139, 152, 185);
 
-.header, .headerItems, .date, button {
+.header, .headerItems, .date, button, .break {
 	background-color: $headerColour;
+}
+
+$breakPolyInset: 35%;
+
+.break {
+	background-color: $headerColour;
+	height: 10px;
+	width: 100%;
+	clip-path: polygon(50% 0, calc(100% - $breakPolyInset) 50%, 50% 100%, $breakPolyInset 50%);
+	opacity: 0.7;
 }
 
 button:hover {

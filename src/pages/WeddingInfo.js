@@ -4,6 +4,7 @@ import EucalyptusHeader from "../components/eucalyptusHeader";
 import HotelCard from "../components/hotelCard";
 import "./WeddingInfo.css"
 import placesToStay from "../placesToStay.json"
+import TextBreak from "../components/textBreak";
 
 function WeddingInfo({isEvening}) {
 
@@ -28,33 +29,27 @@ function WeddingInfo({isEvening}) {
 	}
 
 	function getDayFoodInfo() {
-		if (!isEvening) {
-		return [
-				<div id="canapes" className="menubox">
-					<h3>Canapes</h3>
-					<ul>
-						<li>Chipolatas (GF)</li><br/>
-						<li>Spring rolls (Vg)</li><br/>
-						<li>Goat's cheese mini waffle cones (V)</li><br/>
-						<li>Popcorn chicken</li><br/>
-						<li>Crab scones</li><br/>
-						<li>Stuffed new potatoes (V)</li>
-					</ul>
-				</div>,
-				<div id="breakfast" className="menubox">
-					<h3>Breakfast</h3>
-					<ul>
-						<li>Pan-roasted chicken wrapped in smoked pancetta</li>
-						<br/><span>-OR-</span><br/><br/>
-						<li>Stuffed sweet peppers (Vg)</li>
-						<br/>
-						<li>Summer trifle to finish</li>
-						<br/>
-						<li>For kids: Chicken nuggets, chips and peas</li>
-					</ul>
-				</div>
-		]
-		}
+		return (
+			<React.Fragment>
+				<p>The ceremony will be followed by canapes and a selection of drinks: Pimm's, Beer and squash for the children</p>
+				<p>If this doesn't tickle your fancy, the pay bar will also be open until the end of the night<span className="asterisk">*</span></p>
+				<p>The wedding breakfast will follow shortly after canapes and photos, and there will a pizza bar in the evening.</p>
+				<p>Please see the RSVP form where you can enter any dietary requirements you may have</p>
+				<TextBreak></TextBreak>
+				<p><span className="asterisk">*</span><i>Please note the bars are well stocked for anything you might like to drink. Please refrain from bringing your own alcohol or we'll have to pass the fine on to you</i></p>
+			</React.Fragment>
+		)
+	}
+
+	function getEveningFoodInfo() {
+		return (
+			<React.Fragment>
+				<p>There will be a pay bar open all evening<span className="asterisk">*</span></p>
+				<p>There will also be a pizza bar</p>
+				<TextBreak></TextBreak>
+				<p><span className="asterisk">*</span><i>Please note the bars are well stocked for anything you might like to drink. Please refrain from bringing your own alcohol or we'll have to pass the fine on to you</i></p>
+			</React.Fragment>
+		)
 	}
 
     return (
@@ -82,11 +77,8 @@ function WeddingInfo({isEvening}) {
 				<p>Unfortunately camper vans are not allowed overnight.</p>
 				<br/>
 				<EucalyptusHeader title="Food and Drink" />
-				<p>The ceremony will be followed by canapes and a selection of drinks: Pimm's, Beer and squash for the children</p>
-				<p>If this doesn't tickle your fancy, the pay bar will also be open until the end of the night<span className="asterisk">*</span></p>
-				<p>The wedding breakfast will follow shortly after canapes and photos, and there will a pizza bar in the evening.</p>
-				<p>Please see the RSVP form where you can enter any dietary requirements you may have</p>
-				<p><span className="asterisk">*</span><i>Please note the bars are well stocked for anything you might like to drink. Please refrain from bringing your own alcohol or we'll have to pass the fine on to you</i></p>
+				{!isEvening && getDayFoodInfo()}
+				{isEvening && getEveningFoodInfo()}
 				<br />
 				<EucalyptusHeader title="Where to stay" />
 				<p>As Sopley Mill is on the edge of the New Forest, there is no shortage of places to stay in the area</p>

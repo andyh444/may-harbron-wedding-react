@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from "react";
 
-function SendRequest({ request }) {
+function SendRequest({ request, reset }) {
 
-    const [currentMessage, updateCurrentMessage] = useState("Sending...");
+    const [currentMessage, updateCurrentMessage] = useState("Sending RSVP...");
 
     useEffect(() => {
         send();
@@ -19,15 +19,15 @@ function SendRequest({ request }) {
             const json = await fetchResult.json();
             console.log("response", json);
             if (json.response.error) {
-                updateCurrentMessage(s => "Failed!");
+                updateCurrentMessage(s => "Failed to send RSVP! Error: " + json.response.error);
             }
             else {
-                updateCurrentMessage(s => "Sent!");
+                updateCurrentMessage(s => "RSVP Sent! Thank you!");
             }
         }
         catch (error) {
             console.log(error);
-            updateCurrentMessage(s => "Failed!");
+            updateCurrentMessage(s => "Failed to send RSVP! Error: " + error);
         }
     }
 
@@ -36,7 +36,7 @@ function SendRequest({ request }) {
     return (
         <div>
             <p>{currentMessage}</p>
-            <button>Send Another</button>
+            <button onClick={reset}>Reset</button>
         </div>
     )
 }

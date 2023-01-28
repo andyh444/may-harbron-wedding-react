@@ -1,5 +1,6 @@
 import { React, useRef } from "react";
 import TextInput from "../textInput";
+import TextBreak from "../textBreak";
 
 function DietTable({ names, goBack, submitRSVP }) {
 
@@ -29,6 +30,7 @@ function DietTable({ names, goBack, submitRSVP }) {
 
     return (
         <div>
+            <p>Step 2: For each person attending, enter their dietary requirements in the spaces below, or leave blank if there are none.</p>
             <table>
                 <tbody>
                     <tr>
@@ -48,7 +50,7 @@ function DietTable({ names, goBack, submitRSVP }) {
                 </tbody>
             </table>
             <br/>
-            <p>---</p> {/*TODO: Replace*/}
+            <TextBreak></TextBreak>
             <br/>
             <table>
                 <tbody>
