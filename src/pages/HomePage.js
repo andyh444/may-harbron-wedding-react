@@ -16,16 +16,16 @@ function HomePage({isEvening}) {
         const daysToGo = noOfDaysToGo();
         var message;
         if (daysToGo < 0) {
-            message = "the wedding has happened already! What are you doing back here?";
+            message = "in the past! What are you doing back here?";
         }
         else if (daysToGo === 0) {
-            message = "We will be saying our vows today!";
+            message = "today!";
         }
         else if (daysToGo === 1) {
-            message = `We will be saying our vows tomorrow!`;
+            message = `tomorrow!`;
         }
         else {
-            message = `We will be saying our vows in ${daysToGo} days!`;
+            message = `in just ${daysToGo} days!`;
         }
         return message;
     }
@@ -36,7 +36,7 @@ function HomePage({isEvening}) {
         <div className="HomePageText">
             <p>Hello there</p>    
             <p>If you are here then chances are you've just received one of these long awaited invitations. If not, I don't what you're doing here, but please leave.</p>
-            <p>{getNoOfDaysText()}</p>
+            <p>We will be saying our vows on the 23rd July 2023, and wow that's {getNoOfDaysText()}</p>
             {
                 !isEvening && <p>If you're an evening guest, you need the <Link to="/Evening/Home">evening website</Link></p>
             }
@@ -46,10 +46,10 @@ function HomePage({isEvening}) {
             <br/>
             <p>All the details for the wedding can be found under <Link to="Info">{isEvening ? "Reception Info" :"Wedding Info"}</Link></p>
             <br/>
-            <p></p>
+            <p>You can enter your RSVP <Link to="RSVP">here</Link>. Please aim to do so by the 31st March</p>
             <br />
             <p>If you have any questions that aren't answered on the site, please feel free to contact us at:</p>
-            <p>mayharbronwedding@gmail.com</p>
+            <p><a href="mailto:mayharbronwedding@gmail.com">mayharbronwedding<wbr/>@gmail.com</a></p>
         </div>
     </div>);
 }

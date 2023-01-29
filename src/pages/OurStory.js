@@ -66,6 +66,7 @@ function OurStory() {
         if (polaroid.dataset.status != "normal")
         {
             $(".blackoverlay").fadeIn();
+            document.getElementsByClassName("blackoverlay")[0].scrollIntoView({block: "center", behavior: "smooth"});
         }
         else
         {

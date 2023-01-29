@@ -75,13 +75,13 @@ function NamesTable({ initialNames, submitNames }) {
     console.log("initialNames", initialNames);
     return (
         <div>
-            <p>Please enter your details in the form below, or send your RSVP to <a href="mailto:mayharbronwedding@gmail.com">mayharbronwedding@gmail.com</a></p>
+            <p>Please enter your details in the form below, or send your RSVP to <a href="mailto:mayharbronwedding@gmail.com">mayharbronwedding<wbr/>@gmail.com</a></p>
             <p>Step 1: For each person on the invitation, add their name into the Person field and tick if they can attend. Dietary requirements can be specified in the next step</p>
             <table>
                 <tbody>
                     <tr>
                         <th></th>
-                        <th>Name(s)</th>
+                        <th>Name</th>
                         <th>Can you Attend?</th>
                     </tr>
                     {
@@ -93,6 +93,7 @@ function NamesTable({ initialNames, submitNames }) {
                                     <td><TextInput reference={ref => refs.current[i] = ref} placeholder="E.g. Andy"></TextInput></td>
                                     <td>
                                         <input type="radio" ref={ref => yesRefs.current["attend" + i] = ref} name={"attend" + i} value="Yes"></input><span>Yes</span>
+                                        <br/>
                                         <input type="radio" ref={ref => noRefs.current["attend" + i] = ref} name={"attend" + i} value="No"></input><span>No</span>
                                     </td>
                                 </tr>

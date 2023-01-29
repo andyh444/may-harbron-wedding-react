@@ -6,63 +6,68 @@
             "description": "Our first selfie",
             "timestamp": "9th April '17",
             "left": 27,
-            "top": 15
+            "top": 20
         },
         {
             "imageUrl": "Disneyland.jpg",
-            "description": "When we went to hundred acre wood",
+            "description": "Trip to hundred acre wood",
             "timestamp": "14th June '17",
             "left": 38,
-            "top": 11
+            "top": 16
         },
         {
             "imageUrl": "Scotland.jpg",
             "description": "Scotland",
             "timestamp": "25 March 2018",
             "left": 40,
-            "top": 35
+            "top": 40
         },
         {
             "imageUrl": "TinyAndy.jpg",
             "description": "That time Andy got shrunk",
             "timestamp": "3rd Sept '19",
             "left": 60,
-            "top": 20
+            "top": 25
+        },
+        {
+            "imageUrl": "image3.jpg",
+            "description": "Aber Falls, Wales",
+            "timestamp": "31st Aug 2020"
         },
         {
             "imageUrl": "engagementRing.jpg",
             "description": "Shiny ring",
-            "timestamp": "14 Feb 2020",
+            "timestamp": "14 Feb 2021",
             "left": 52,
-            "top": 35
+            "top": 40
         },
         {
             "imageUrl": "OtisPuppy.jpg",
-            "description": "Introducing a fluffy potato of chaos into our lives",
+            "description": "Fluffy chaos potato",
             "timestamp": "17th Nov '21",
             "left": 73,
-            "top": 12
+            "top": 17
         },
         {
             "imageUrl": "SummerWedding.jpg",
             "description": "At a wedding (not ours - that hasn't happened yet)",
-            "timestamp": "30 May '22",
+            "timestamp": "28 May '22",
             "left": 48,
-            "top": 26
+            "top": 31
         },
         {
             "imageUrl": "saveTheDate.jpg",
             "description": "Save the Date!",
             "timestamp": "Dunno",
             "left": 70,
-            "top": 40
+            "top": 45
         },
         {
             "imageUrl": "sunflowers.jpg",
-            "description": "Save the Date!",
+            "description": "Enriching the puppy!",
             "timestamp": "11 August 2022",
             "left": 60,
-            "top": 45
+            "top": 50
         },
 
 
@@ -71,23 +76,7 @@
         {
             "imageUrl": "AndyAndMollySmall.jpg",
             "description": "Happy on The Hill",
-            "timestamp": "23 July 23"
-        },
-        {
-            "imageUrl": "image3.jpg",
-            "description": "Some waterfall somewhere",
-            "timestamp": "31st Feb '86"
-        },
-        {
-            "imageUrl": "image1.jpg",
-            "description": "Sofa time",
-            "timestamp": "1st Dec '26"
-        },
-        {
-            "imageUrl": "AndyAndMollyChrisWedding.jpg",
-            "description": "Smile",
-            "timestamp": "23 July 23"
+            "timestamp": "30th May 22"
         }
-        
     ]
 }

@@ -46,6 +46,7 @@ function RSVP({ props, isEvening }) {
 				return (
 					<div>
 						<p>Please note this is the form for the {isEvening ? "Evening" : "Day"}. If you need the {isEvening ? "Day" : "Evening"} form, click <Link to={isEvening ? "/RSVP" : "/Evening/RSVP"}>here</Link></p>
+						<p>Please aim to send your RSVP by the 31st March. If you do not, you may be chased.</p>
 						<TextBreak></TextBreak>
 						<NamesTable initialNames={currentNames} submitNames={submitNames}></NamesTable>
 					</div>);

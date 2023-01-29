@@ -104,7 +104,7 @@ $breakPolyInset: 35%;
 	background-color: $headerColour;
 	height: 10px;
 	width: 100%;
-	clip-path: polygon(50% 0, calc(100% - $breakPolyInset) 50%, 50% 100%, $breakPolyInset 50%);
+	clip-path: polygon(49% 0, 50% 40%, 51% 0, calc(100% - $breakPolyInset) 50%, 51% 100%, 50% 60%, 49% 100%, $breakPolyInset 50%);
 	opacity: 0.7;
 }
 
@@ -153,57 +153,6 @@ button {
 	margin-top: -1px; /* make sure there isn't a gap between the tear and the header */
 }
 
-.headerItems {
-	display: flex;
-	justify-content: center;
-}
-
-.headerItem {
-	display: inline-block;
-	margin: 20px 20px;
-	cursor: pointer;
-	font-family: Nixie One;
-	font-size: min(4vw, 36px);
-	font-weight: 500;
-	color: white;
-	position: relative;
-	text-align: center;
-}
-
-.headerItem p {
-	margin: 2px;
-}
-
-.headerItem:hover {
-	font-weight: 1000;
-}
-
-.headerItem[data-activepage="true"] {
-	text-shadow: 0 0 4px white;
-	transition: text-shadow 500ms;
-	font-weight: 1000;
-}
-
-.headerItem[data-activepage="true"] .headerItemUnderline {
-	width: 90%;
-}
-
-.headerItem:hover .headerItemUnderline {
-	width: 100%;
-}
-
-.headerItemUnderline {
-	width: 0;
-	height: 2px;
-	background-color: white;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
-	transition: width 250ms;
-	border-radius: 1px;
-	box-shadow: 0 0 4px white;
-}
-
 .pages {
 	width: 100%;
 	overflow: hidden;
@@ -248,68 +197,6 @@ button {
 
 .page[data-status="hidden"] {
 	display: none;
-}
-
-.VenueInfo {
-	display: inline-block;	
-	width: 100%;
-
-	position: relative;
-}
-
-.AddressBoxBackground {
-	/*background-color: rgb(255,255,255,0.5);*/
-	background-image: url('Images\\main-image-mill.jpg');/*, linear-gradient(to right, rgb(255, 255, 255, 0), white);*/
-	background-size: cover;
-	background-position:center;
-	width: 100%;
-	height: 100%;
-	overflow: none;
-	opacity: 0.5;
-	border-radius: 32px;
-}
-
-.AddressBox {
-	/*background-color: rgb(255,255,255,0.5);*/
-	/*background-image: url('Images\\main-image-mill.jpg');/*, linear-gradient(to right, rgb(255, 255, 255, 0), white);*/
-	/*background-size: cover;
-	background-position:center;*/
-	border-radius: 32px;
-
-	display: inline-block;	
-	vertical-align: middle;
-	width: clamp(300px, 49%, 600px);
-	height: 300px;
-	justify-content: center;
-	position: relative;
-}
-
-.AddressParagraphs {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-}
-
-
-.MapBox {
-	display: inline-block;	
-
-	vertical-align: top;
-
-	width: clamp(300px, 49%, 600px);
-	height: 300px;
-}
-
-.menubox {
-	margin-left: 20px;
-	margin-right: 20px;
-	
-	vertical-align: top;
-	display: inline-block;
-	text-align: left;
-	width: 20%;
-	min-width: 200px;
 }
 
 .eucalyptusImageContainer {

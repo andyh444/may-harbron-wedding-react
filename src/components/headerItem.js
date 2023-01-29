@@ -1,4 +1,5 @@
 import React from "react";
+import "./headerItem.css"
 
 function HeaderItem({name, isActive, headerButtonClick}) {
 

@@ -1,0 +1,50 @@
+.headerItems {
+	display: flex;
+	justify-content: center;
+}
+
+.headerItem {
+	display: inline-block;
+	margin: 20px 20px;
+	cursor: pointer;
+	font-family: Nixie One;
+	font-size: min(4vw, 36px);
+	font-weight: 500;
+	color: white;
+	position: relative;
+	text-align: center;
+}
+
+.headerItem p {
+	margin: 2px;
+}
+
+.headerItem:hover {
+	font-weight: 1000;
+}
+
+.headerItem[data-activepage="true"] {
+	text-shadow: 0 0 4px white;
+	transition: text-shadow 500ms;
+	font-weight: 1000;
+}
+
+.headerItem[data-activepage="true"] .headerItemUnderline {
+	width: 90%;
+}
+
+.headerItem:hover .headerItemUnderline {
+	width: 100%;
+}
+
+.headerItemUnderline {
+	width: 0;
+	height: 2px;
+	background-color: white;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+	transition: width 250ms;
+	border-radius: 1px;
+	box-shadow: 0 0 4px white;
+}
