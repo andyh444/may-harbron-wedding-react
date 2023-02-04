@@ -1,5 +1,4 @@
 import React from "react";
-import perfectPigImage from "../Images/perfectpiglogo.png"
 import EucalyptusHeader from "../components/eucalyptusHeader";
 import HotelCard from "../components/hotelCard";
 import "./WeddingInfo.css"
@@ -67,7 +66,7 @@ function WeddingInfo({isEvening}) {
 						</div>
 					</div>
 					<div className="MapBox">
-						<iframe id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Sopley%20Mill,%20Mill%20Lane,%20Nr%20Christchurch,%20Dorset,%20BH23%207AU&t=&z=15&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+						<iframe title="map" id="gmap_canvas" height="100%" width="100%" src="https://maps.google.com/maps?q=Sopley%20Mill,%20Mill%20Lane,%20Nr%20Christchurch,%20Dorset,%20BH23%207AU&t=&z=15&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
 					</div>
 				</div>
 				<p>To get there: Follow the A31 to Ringwood, then take the B3347 to Sopley</p>
@@ -110,8 +109,8 @@ function WeddingInfo({isEvening}) {
 				</div>
 				<br />
 				<EucalyptusHeader title="Gifts" />
-				<p>As we already live together, and Andy is a hoarder, we've already accumulated more items than we have storage for</p>
-				<p>If you would like to give a gift, we are saving for our honeymoon, and any contribution you can give towards that we will be tremendously grateful for</p>
+				<p>We have lived together almost four years,<br/>And discovered Andy is a hoarder; Molly’s worst fear.<br/>So we’ve run out of space for anymore treasure,<br/>All we ask is that we celebrate together.</p>
+				<p>If you wish to give a gift, to help us on our way,<br/>We’re saving for our honeymoon, somewhere far away.<br/>We know it’s not tradition, but we’d love a place to stay.<br/>But the greatest gift of all, would be seeing you on the day.</p>
 				<br/>
 				<br/>
 			</div>

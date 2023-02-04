@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./RSVP.css"
 import EucalyptusHeader from "../components/eucalyptusHeader";
@@ -8,8 +8,6 @@ import SendRequest from "../components/RSVP/sendRequest";
 import TextBreak from "../components/textBreak";
 
 function RSVP({ props, isEvening }) {
-	const SHOWING_FORM = "showingForm";
-
 	const [currentNames, setCurrentNames] = useState(null);
 	const [currentRSVPRequest, setCurrentRSVPRequest] = useState(null);
 	const [currentStep, setCurrentStep] = useState(1);

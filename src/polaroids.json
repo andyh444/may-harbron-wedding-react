@@ -19,64 +19,64 @@
             "imageUrl": "Scotland.jpg",
             "description": "Scotland",
             "timestamp": "25 March 2018",
-            "left": 40,
-            "top": 40
+            "left": 48,
+            "top": 31
         },
         {
             "imageUrl": "TinyAndy.jpg",
             "description": "That time Andy got shrunk",
             "timestamp": "3rd Sept '19",
-            "left": 60,
-            "top": 25
+            "left": 68,
+            "top":36
         },
         {
             "imageUrl": "image3.jpg",
             "description": "Aber Falls, Wales",
-            "timestamp": "31st Aug 2020"
+            "timestamp": "31st Aug 2020",
+            "left": 73,
+            "top": 17
         },
         {
             "imageUrl": "engagementRing.jpg",
-            "description": "Shiny ring",
+            "description": "Engagement Photo",
             "timestamp": "14 Feb 2021",
             "left": 52,
-            "top": 40
+            "top": 43
         },
         {
             "imageUrl": "OtisPuppy.jpg",
-            "description": "Fluffy chaos potato",
+            "description": "Introducing the fluffy chaos potato",
             "timestamp": "17th Nov '21",
-            "left": 73,
-            "top": 17
+            "left": 58,
+            "top": 60
         },
         {
             "imageUrl": "SummerWedding.jpg",
             "description": "At a wedding (not ours - that hasn't happened yet)",
             "timestamp": "28 May '22",
-            "left": 48,
-            "top": 31
+            "left": 34,
+            "top": 40
         },
         {
             "imageUrl": "saveTheDate.jpg",
             "description": "Save the Date!",
-            "timestamp": "Dunno",
+            "timestamp": "June 2021",
             "left": 70,
-            "top": 45
+            "top": 50
         },
         {
             "imageUrl": "sunflowers.jpg",
-            "description": "Enriching the puppy!",
+            "description": "Enriching the puppy",
             "timestamp": "11 August 2022",
-            "left": 60,
-            "top": 50
+            "left": 35,
+            "top": 68
         },
-
-
-
-
         {
             "imageUrl": "AndyAndMollySmall.jpg",
             "description": "Happy on The Hill",
-            "timestamp": "30th May 22"
+            "timestamp": "30th May 22",
+            "left": 30,
+            "top": 50
         }
     ]
 }

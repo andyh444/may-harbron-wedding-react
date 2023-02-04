@@ -61,10 +61,14 @@ td {
 	color: rgb(255, 255, 255);/*#734d78;*/
 	text-shadow: -2px -2px 2px rgb(0,0,0,0.2);
 	position: absolute;
-	top: 0%;
-	font-size: min(8vw, 64px);
+	left: 50%;
+	bottom: 0%;
+	font-size: clamp(32px, 8vw, 64px);
 	font-weight: bold;
-	transform: translate(0, -50%);
+	transform: translate(-50%, 75%);
+	vertical-align: bottom;
+	text-align: center;
+	width: 100%;
 }
 
 .date {
@@ -74,6 +78,7 @@ td {
 	font-family: Nixie One;
 	font-weight: 600;
 	padding-bottom: 2px;
+	margin-top: -1px;
 }
 
 .InviteImage {
@@ -101,7 +106,6 @@ $headerColour: rgb(139, 152, 185);
 $breakPolyInset: 35%;
 
 .break {
-	background-color: $headerColour;
 	height: 10px;
 	width: 100%;
 	clip-path: polygon(49% 0, 50% 40%, 51% 0, calc(100% - $breakPolyInset) 50%, 51% 100%, 50% 60%, 49% 100%, $breakPolyInset 50%);
@@ -116,6 +120,12 @@ button:hover {
 button:active {
     cursor: pointer;
     background-color: color.scale($headerColour, $lightness: -40%);
+}
+
+button:disabled {
+	color: lightgray;
+	background-color: color.scale($headerColour, $saturation: -100%);
+	cursor:not-allowed;
 }
 
 button {
@@ -150,7 +160,7 @@ button {
 	width: 100%;
 	aspect-ratio: 3000 / 169;
 	z-index: 999;
-	margin-top: -1px; /* make sure there isn't a gap between the tear and the header */
+	margin-top: -2px; /* make sure there isn't a gap between the tear and the header */
 }
 
 .pages {

@@ -2,6 +2,10 @@
     border: none;
     margin: 3px;
     background-color: rgb(250, 250, 250);
+    width: min(250px, 50vw);
+}
+
+.nameInput {
     width: min(200px, 35vw);
 }
 

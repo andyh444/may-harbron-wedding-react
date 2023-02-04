@@ -1,10 +1,10 @@
 import React from "react";
 import "./textInput.css"
 
-function TextInput({ placeholder, reference }) {
+function TextInput({ placeholder, reference, className }) {
     return (
         <div className="textInputContainer">
-            <input className="textInput" type="text" placeholder={placeholder} ref={reference}></input>
+            <input className={"textInput " + className} type="text" placeholder={placeholder} ref={reference}></input>
         </div>
     );
 }

@@ -76,7 +76,8 @@ function NamesTable({ initialNames, submitNames }) {
     return (
         <div>
             <p>Please enter your details in the form below, or send your RSVP to <a href="mailto:mayharbronwedding@gmail.com">mayharbronwedding<wbr/>@gmail.com</a></p>
-            <p>Step 1: For each person on the invitation, add their name into the Person field and tick if they can attend. Dietary requirements can be specified in the next step</p>
+            <p>Step 1: For each person on the invitation, add their name into the Person field and tick if they can attend.</p>
+            <p>Dietary requirements can be specified in the next step.</p>
             <table>
                 <tbody>
                     <tr>
@@ -90,7 +91,7 @@ function NamesTable({ initialNames, submitNames }) {
                             return (
                                 <tr key={i}>
                                     <td>Person {i + 1}</td>
-                                    <td><TextInput reference={ref => refs.current[i] = ref} placeholder="E.g. Andy"></TextInput></td>
+                                    <td><TextInput className="nameInput" reference={ref => refs.current[i] = ref} placeholder="E.g. Andy"></TextInput></td>
                                     <td>
                                         <input type="radio" ref={ref => yesRefs.current["attend" + i] = ref} name={"attend" + i} value="Yes"></input><span>Yes</span>
                                         <br/>
@@ -102,11 +103,16 @@ function NamesTable({ initialNames, submitNames }) {
                     }
                 </tbody>
             </table>
+            <br/>
             {
                 validationMessage && <p className="validationMessage">{validationMessage}</p>
             }
+            <br/>
             <button onClick={AddName}>Add Name</button>
             <button onClick={Submit}>Next</button>
+            <br/>
+            <br/>
+            <br/>
         </div>
     );
 }

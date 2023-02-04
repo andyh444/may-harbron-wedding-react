@@ -60,9 +60,9 @@ function DietTable({ names, goBack, submitRSVP }) {
                     </tr>
                 </tbody>
             </table>
-            
-            <button onClick={Submit}>Submit</button>
+
             <button onClick={GoBack}>Back</button>
+            <button onClick={Submit}>Submit</button>
         </div>
     );
 }

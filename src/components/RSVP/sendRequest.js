@@ -1,8 +1,8 @@
 import { React, useState, useEffect } from "react";
 
 function SendRequest({ request, reset }) {
-
-    const [currentMessage, updateCurrentMessage] = useState("Sending RSVP...");
+    const INITIAL_MESSAGE = "Sending RSVP...";
+    const [currentMessage, updateCurrentMessage] = useState(INITIAL_MESSAGE);
 
     useEffect(() => {
         send();
@@ -36,7 +36,7 @@ function SendRequest({ request, reset }) {
     return (
         <div>
             <p>{currentMessage}</p>
-            <button onClick={reset}>Reset</button>
+            <button onClick={reset} disabled={currentMessage === INITIAL_MESSAGE}>Reset</button>
         </div>
     )
 }
