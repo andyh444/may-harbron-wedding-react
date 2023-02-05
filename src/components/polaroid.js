@@ -13,12 +13,16 @@ function Polaroid({index, polaroidPosition, state, polaroidData, onEnter, onLeav
     let translateY = "-50%";
     let scaleX = 3;
     let scaleY = 3;
+    let rotation = 0;
     if (state === "normal" || state === "hover") {
         translateX = `calc(${polaroidPosition.left - 50}vw - 50%)`;
         translateY = `calc(${polaroidPosition.top - 60}vh - 50%)`;
         scaleX = scaleY = 1;
         if (state === "hover") {
             scaleX = scaleY = 1.5;
+        }
+        else {
+            rotation = polaroidPosition.rotation;
         }
     }
     if (state === "flip") {
@@ -31,14 +35,16 @@ function Polaroid({index, polaroidPosition, state, polaroidData, onEnter, onLeav
     let scaleStyle = {
         transform: `scale(${scaleX},${scaleY})`,
     }
-    console.log(scaleStyle);
+    let rotationStyle = {
+        transform: `rotate(${rotation}deg)`
+    }
 
     return (
             
             <div className="polaroidContainer noBlueBack" data-status={state} >
-                <div className="polaroidTranslator" style={style} onClick={onClick} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <div className="polaroidTranslator noBlueBack" style={style} onClick={onClick} onMouseEnter={onEnter} onMouseLeave={onLeave}>
                     <div className="polaroidScaler noBlueBack" style={scaleStyle} >
-                        <div className="polaroid" style={state !== "normal" ? {} : {transform: "rotate(" + polaroidPosition.rotation + "deg) scale(1)" }}>
+                        <div className="polaroid" style={rotationStyle}>
                             <div className="polaroidimagecontainer">
                                 <img alt={polaroidData.description} loading='lazy' className='polaroidimage' src={imageSrc} />
                                 <div style={{"opacity": opacity}} className='polaroidimagecover'></div>
