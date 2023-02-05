@@ -45,6 +45,7 @@ function RSVP({ props, isEvening }) {
 					<div>
 						<p>Please note this is the form for the {isEvening ? "Evening" : "Day"}. If you need the {isEvening ? "Day" : "Evening"} form, click <Link to={isEvening ? "/RSVP" : "/Evening/RSVP"}>here</Link></p>
 						<p>Please aim to send your RSVP by the 31st March. If you do not, you may be chased.</p>
+						<p>We’re excited to celebrate our wedding day with you and your family. However, we would really like an adults only evening reception. Therefore, we kindly ask that all children are taken home at 6pm.</p>
 						<TextBreak></TextBreak>
 						<NamesTable initialNames={currentNames} submitNames={submitNames}></NamesTable>
 					</div>);

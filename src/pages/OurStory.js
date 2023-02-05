@@ -8,10 +8,8 @@ function OurStory() {
 
     // TODO: It seems like there should be a better way to get the originalRotations...
     const [originalRotations, _] = useState(getPolaroidRotations());
-    const [polaroidRotations, updatePolaroidRotations] = useState(originalRotations);
 
-    const [polaroidLefts, updatePolaroidLefts] = useState(polaroidsList.Polaroids.map(x => x.left));
-    const [polaroidTops, updatePolaroidTops] = useState(polaroidsList.Polaroids.map(x => x.top));
+    const [polaroidPositions, updatePolaroidPositions] = useState(polaroidsList.Polaroids.map((x, i) => {return { left: x.left, top: x.top, rotation: originalRotations[i] }}));
     const [activePolaroid, updateActivePolaroid] = useState({ index: -1, state: "normal"});
     const overlayRef = useRef();
 
@@ -32,9 +30,7 @@ function OurStory() {
             return <Polaroid
                 key={i}
                 index={i}
-                left={polaroidLefts[i]}
-                top={polaroidTops[i]}
-                rotation={polaroidRotations[i]}
+                polaroidPosition={polaroidPositions[i]}
                 polaroidData={x}
                 state={activePolaroid.index === i ? activePolaroid.state : "normal"}
                 onEnter = {() => polaroidEnter(i)}
@@ -46,7 +42,10 @@ function OurStory() {
     function polaroidClick(number) {
         let newActivePolaroid;
         if (activePolaroid.state === "normal" || activePolaroid.state === "hover") {
-                newActivePolaroid = { index: number, state: "zoomAndCentre" };
+            if (activePolaroid.state === "normal") {
+                polaroidEnter(number);
+            }
+            newActivePolaroid = { index: number, state: "zoomAndCentre" };
         }
         else if (activePolaroid.state === "zoomAndCentre") {
             newActivePolaroid = { index: number, state: "flip" };
@@ -66,7 +65,7 @@ function OurStory() {
             overlayRef.current.scrollIntoView({block: "center", behavior: "smooth"});
         }
         else {
-            polaroidLeave(number);
+            allPolaroidsToOriginalPosition(true);
             $(".blackoverlay").fadeOut();
         }
     }
@@ -74,22 +73,19 @@ function OurStory() {
     const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
     function polaroidEnter(number) {
+        console.log("polaroidEnter");
         if (number === activePolaroid.index) {
+            console.log("number is active polaroid");
             return;
         }
-
         let thisleft = polaroidsList.Polaroids[number].left;
         let thistop = polaroidsList.Polaroids[number].top;
-
-        let newLefts = [];
-        let newTops = [];
-        let newRotations = [];
+        let newPositions = [];
         for (var i = 0; i < polaroidsList.Polaroids.length; i++)
         {
+            let newPosition;
             if (i === number) {
-                newLefts.push(thisleft);
-                newTops.push(thistop);
-                newRotations.push(originalRotations[i]);
+                newPosition = { left: thisleft, top: thistop, rotation: originalRotations[i]};
             }
             else {
                 var left = polaroidsList.Polaroids[i].left;
@@ -104,31 +100,25 @@ function OurStory() {
                     // the closer the polaroid is to the active polaroid, the more it gets displaced
                     var amount = 4.0 * Math.pow(distance / 100, -0.5);
 
-                    newLefts.push(clamp(0, left + amount * directionX, 100));
-                    newTops.push(clamp(0, top + amount * directionY, 100));
-                    newRotations.push(originalRotations[i] + 30 * (Math.random() - 0.5));
+                    newPosition = { left: clamp(0, left + amount * directionX, 100), top: clamp(0, top + amount * directionY, 100), rotation: originalRotations[i] + 30 * (Math.random() - 0.5)};
                 }
                 else {
-                    newLefts.push(left);
-                    newTops.push(top);
-                    newRotations.push(originalRotations[i]);
+                    newPosition = { left: left, top: top, rotation: originalRotations[i]};
                 }
             }
+            newPositions.push(newPosition);
         }
         let newActivePolaroid = {
             index: number,
             state: "hover"
         };
+        updatePolaroidPositions(p => newPositions);
         updateActivePolaroid(p => newActivePolaroid);
-        updatePolaroidLefts(l => newLefts);
-        updatePolaroidTops(t => newTops);
-        updatePolaroidRotations(r => newRotations);
     }
     
     function polaroidLeave(number) {
         if (activePolaroid.index !== -1
-            && (activePolaroid.state === "hover" || activePolaroid.state === "normal"))
-        {
+            && (activePolaroid.state === "hover" || activePolaroid.state === "normal")) {
             allPolaroidsToOriginalPosition(true);
         }
     }
@@ -136,18 +126,11 @@ function OurStory() {
     function allPolaroidsToOriginalPosition(includeRotation) {
         $(".blackoverlay").fadeOut();
 
-        let newLefts = [];
-        let newTops = [];
+        let newPositions = [];
         for (var i = 0; i < polaroidsList.Polaroids.length; i++) {
-            newLefts.push(polaroidsList.Polaroids[i].left);
-            newTops.push(polaroidsList.Polaroids[i].top);
+            newPositions.push({ left: polaroidsList.Polaroids[i].left, top: polaroidsList.Polaroids[i].top, rotation: includeRotation ? originalRotations[i] : polaroidPositions[i].rotation});
         }
-
-        updatePolaroidLefts(l => newLefts);
-        updatePolaroidTops(t => newTops);
-        if (includeRotation) {
-            updatePolaroidRotations(r => originalRotations);
-        }
+        updatePolaroidPositions(p => newPositions);
         let newActivePolaroid = {
             index: -1,
             state: "normal"

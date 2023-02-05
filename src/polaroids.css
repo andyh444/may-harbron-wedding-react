@@ -51,15 +51,11 @@ body {
       
       position:absolute;
       width:min(20vw, 200px);
-      left: 50%;
-      top: 50%;
       /* animating left and top is not as performant as animating translate() but offers more flexibility */
       transition: left 500ms, top 500ms, transform 250ms;
       transition-timing-function: ease-out, ease-out, ease-out; 
       transform: translate(-50%,-50%);
-      /*transition: transform 500ms;
-      transition-timing-function: ease-out;*/
-      
+
       z-index:-1;
       cursor: pointer;
       
@@ -97,7 +93,7 @@ body {
       height: 100%;
       position: relative;
       background-color:white;
-      border-radius:3px;
+      border-radius:2%;
       transition: transform 250ms;
       transition-timing-function: cubic-bezier(0.33,0.2,0.66,0.8); /* symmetrical, to work well with the opacity curve of the image/back */
       box-shadow: 10px 10px 5px rgba(0,0,0,0.5), 0 0 1px rgba(0,0,0,0.5);
