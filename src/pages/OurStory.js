@@ -60,13 +60,12 @@ function OurStory() {
         updateActivePolaroid(p => newActivePolaroid);
 
         if (newActivePolaroid.state !== "normal") {
-            // TODO: Use jQuery in a neater way
-            $(".blackoverlay").fadeIn();
+            $(overlayRef.current).fadeIn();
             overlayRef.current.scrollIntoView({block: "center", behavior: "smooth"});
         }
         else {
             allPolaroidsToOriginalPosition(true);
-            $(".blackoverlay").fadeOut();
+            $(overlayRef.current).fadeOut();
         }
     }
 
@@ -124,7 +123,7 @@ function OurStory() {
     }
 
     function allPolaroidsToOriginalPosition(includeRotation) {
-        $(".blackoverlay").fadeOut();
+        $(overlayRef.current).fadeOut();
 
         let newPositions = [];
         for (var i = 0; i < polaroidsList.Polaroids.length; i++) {
@@ -144,19 +143,9 @@ function OurStory() {
             <p>We wrote on the back of each so you know what's going on.</p>
             <p>These polaroids are virtual, so please do not try to grab them off the screen - it won't work and you may hurt yourself. Instead, click on one to zoom it in, and click on it again to flip it over.</p>
             <div className="polaroidgroup" >
-                <div className="polaroidSideArea left">
-                    <div className="blackoverlay" onClick={blackoverlayclick}>
-                    </div>
-                </div>
-                <div className="polaroidArea">
                     <div ref={overlayRef} className="blackoverlay" onClick={blackoverlayclick}>
                     </div>
                     { getPolaroids() }
-                </div>
-                <div className="polaroidSideArea right">
-                    <div className="blackoverlay" onClick={blackoverlayclick}>
-                    </div>
-                </div>
             </div>
             <p>(Spoiler alert: These aren't really polaroids)</p>
         </div>
