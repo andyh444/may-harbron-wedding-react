@@ -13,7 +13,7 @@ function Polaroid({index, left, top, rotation, state, polaroidData, onEnter, onL
             <div style={state !== "normal" && state !== "hover" ? {} : {left: left + "%", top: top + "%"}} className="polaroid" data-status={state} onClick={onClick} onMouseEnter={onEnter} onMouseLeave={onLeave}>
                 <div style={state !== "normal" ? {} : {transform: "rotate(" + rotation + "deg) scale(1)" }} className="polaroidcontainer">
                     <div className="polaroidimagecontainer">
-                        <img loading='lazy' className='polaroidimage' src={imageSrc} />
+                        <img alt={polaroidData.description} loading='lazy' className='polaroidimage' src={imageSrc} />
                         <div style={{"opacity": opacity}} className='polaroidimagecover'></div>
                     </div>
                     <div className="polaroidbackcontainer">

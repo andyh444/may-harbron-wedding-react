@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import polaroidsList from "../polaroids.json"
 import "../polaroids.css"
 import Polaroid from "../components/polaroid";
@@ -13,6 +13,7 @@ function OurStory() {
     const [polaroidLefts, updatePolaroidLefts] = useState(polaroidsList.Polaroids.map(x => x.left));
     const [polaroidTops, updatePolaroidTops] = useState(polaroidsList.Polaroids.map(x => x.top));
     const [activePolaroid, updateActivePolaroid] = useState({ index: -1, state: "normal"});
+    const overlayRef = useRef();
 
     function blackoverlayclick() {
         allPolaroidsToOriginalPosition(true);
@@ -59,12 +60,10 @@ function OurStory() {
         }
         updateActivePolaroid(p => newActivePolaroid);
 
-        console.log(number, newActivePolaroid);
-
         if (newActivePolaroid.state !== "normal") {
-            // cheeky DOM manipulation - should be safe enough but check if there's a more React-friendly way of doing this, e.g. https://kbenbeneck.medium.com/using-scrollintoview-with-react-components-ba41df3ff12
+            // TODO: Use jQuery in a neater way
             $(".blackoverlay").fadeIn();
-            document.getElementsByClassName("blackoverlay")[0].scrollIntoView({block: "center", behavior: "smooth"});
+            overlayRef.current.scrollIntoView({block: "center", behavior: "smooth"});
         }
         else {
             polaroidLeave(number);
@@ -167,7 +166,7 @@ function OurStory() {
                     </div>
                 </div>
                 <div className="polaroidArea">
-                    <div className="blackoverlay" onClick={blackoverlayclick}>
+                    <div ref={overlayRef} className="blackoverlay" onClick={blackoverlayclick}>
                     </div>
                     { getPolaroids() }
                 </div>
