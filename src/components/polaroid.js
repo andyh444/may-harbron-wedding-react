@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../polaroids.css"
 
-function Polaroid({index, left, top, rotation, polaroidData, onEnter, onLeave, onClick}) {
+function Polaroid({index, left, top, rotation, state, polaroidData, onEnter, onLeave, onClick}) {
     const [opacity, setOpacity] = useState(1)
 
     setTimeout(() => {
@@ -9,17 +9,18 @@ function Polaroid({index, left, top, rotation, polaroidData, onEnter, onLeave, o
     }, 100);
     const imageSrc = '..//Images//' + polaroidData.imageUrl;
     return (
-        <div style={{left: left + "%", top: top + "%"}} className="polaroid" data-originalleft={left} data-originaltop={top} data-rotation={rotation} data-status="normal" onClick={onClick} onMouseEnter={onEnter} onMouseLeave={onLeave}>
-            <div style={{transform: "rotate(" + rotation + "deg) scale(1)" }} className="polaroidcontainer">
-                <div className="polaroidimagecontainer">
-                    <img loading='lazy' className='polaroidimage' src={imageSrc} />
-                    <div style={{"opacity": opacity}} className='polaroidimagecover'></div>
-                </div>
-                <div className="polaroidbackcontainer">
-                    <div className='polaroidback'>{polaroidData.description}<br/>{polaroidData.timestamp}</div>
+            
+            <div style={state !== "normal" && state !== "hover" ? {} : {left: left + "%", top: top + "%"}} className="polaroid" data-status={state} onClick={onClick} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                <div style={state !== "normal" ? {} : {transform: "rotate(" + rotation + "deg) scale(1)" }} className="polaroidcontainer">
+                    <div className="polaroidimagecontainer">
+                        <img loading='lazy' className='polaroidimage' src={imageSrc} />
+                        <div style={{"opacity": opacity}} className='polaroidimagecover'></div>
+                    </div>
+                    <div className="polaroidbackcontainer">
+                        <div className='polaroidback'>{polaroidData.description}<br/>{polaroidData.timestamp}</div>
+                    </div>
                 </div>
             </div>
-        </div>
     )
 }
 

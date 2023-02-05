@@ -5,7 +5,14 @@ import Polaroid from "../components/polaroid";
 import $ from 'jquery'
 
 function OurStory() {
-    const [polaroidRotations, updatePolaroidRotations] = useState(getPolaroidRotations());
+
+    // TODO: It seems like there should be a better way to get the originalRotations...
+    const [originalRotations, _] = useState(getPolaroidRotations());
+    const [polaroidRotations, updatePolaroidRotations] = useState(originalRotations);
+
+    const [polaroidLefts, updatePolaroidLefts] = useState(polaroidsList.Polaroids.map(x => x.left));
+    const [polaroidTops, updatePolaroidTops] = useState(polaroidsList.Polaroids.map(x => x.top));
+    const [activePolaroid, updateActivePolaroid] = useState({ index: -1, state: "normal"});
 
     function blackoverlayclick() {
         allPolaroidsToOriginalPosition(true);
@@ -24,10 +31,11 @@ function OurStory() {
             return <Polaroid
                 key={i}
                 index={i}
-                left={x.left}
-                top={x.top}
+                left={polaroidLefts[i]}
+                top={polaroidTops[i]}
                 rotation={polaroidRotations[i]}
                 polaroidData={x}
+                state={activePolaroid.index === i ? activePolaroid.state : "normal"}
                 onEnter = {() => polaroidEnter(i)}
                 onLeave = {() => polaroidLeave(i)}
                 onClick = {() => polaroidClick(i)}/>
@@ -35,51 +43,58 @@ function OurStory() {
     }
 
     function polaroidClick(number) {
-        var polaroid = document.getElementsByClassName("polaroid")[number];
-        var status = polaroid.dataset.status;
-        polaroid.style.removeProperty("left");
-        polaroid.style.removeProperty("top");
-        polaroid.children[0].style.removeProperty("transform");
-        if (status === "normal" || status === "hover") {
-            polaroid.dataset.status = "zoomAndCentre";
+        let newActivePolaroid;
+        if (activePolaroid.state === "normal" || activePolaroid.state === "hover") {
+                newActivePolaroid = { index: number, state: "zoomAndCentre" };
         }
-        else if (status === "zoomAndCentre") {
-            polaroid.dataset.status = "flip";
+        else if (activePolaroid.state === "zoomAndCentre") {
+            newActivePolaroid = { index: number, state: "flip" };
         }
-        else if (status === "flip") {
-            polaroid.dataset.status = "zoomAndCentrePostFlip";
+        else if (activePolaroid.state === "flip") {
+            newActivePolaroid = { index: number, state: "zoomAndCentrePostFlip" };
+
         }
-        else if (status === "zoomAndCentrePostFlip") {
-            polaroid.dataset.status = "normal";
-            polaroidLeave(number);
+        else if (activePolaroid.state === "zoomAndCentrePostFlip") {
+            newActivePolaroid = { index: -1, state: "normal" };
         }
-        if (polaroid.dataset.status !== "normal")
-        {
+        updateActivePolaroid(p => newActivePolaroid);
+
+        console.log(number, newActivePolaroid);
+
+        if (newActivePolaroid.state !== "normal") {
+            // cheeky DOM manipulation - should be safe enough but check if there's a more React-friendly way of doing this, e.g. https://kbenbeneck.medium.com/using-scrollintoview-with-react-components-ba41df3ff12
             $(".blackoverlay").fadeIn();
             document.getElementsByClassName("blackoverlay")[0].scrollIntoView({block: "center", behavior: "smooth"});
         }
-        else
-        {
+        else {
+            polaroidLeave(number);
             $(".blackoverlay").fadeOut();
         }
     }
 
+    const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
     function polaroidEnter(number) {
-        var polaroids = document.getElementsByClassName("polaroid");
-        var thisPolaroid = polaroids[number];
-        if (thisPolaroid.dataset.status !== "normal")
-        {
-            console.log(thisPolaroid.dataset.status);
+        if (number === activePolaroid.index) {
             return;
         }
-        var thisleft = parseInt(thisPolaroid.dataset.originalleft);
-        var thistop = parseInt(thisPolaroid.dataset.originaltop);
-        for (var i = 0; i < polaroids.length; i++)
+
+        let thisleft = polaroidsList.Polaroids[number].left;
+        let thistop = polaroidsList.Polaroids[number].top;
+
+        let newLefts = [];
+        let newTops = [];
+        let newRotations = [];
+        for (var i = 0; i < polaroidsList.Polaroids.length; i++)
         {
-            if (i !== number)
-            {
-                var left = parseInt(polaroids[i].dataset.originalleft);
-                var top = parseInt(polaroids[i].dataset.originaltop);
+            if (i === number) {
+                newLefts.push(thisleft);
+                newTops.push(thistop);
+                newRotations.push(originalRotations[i]);
+            }
+            else {
+                var left = polaroidsList.Polaroids[i].left;
+                var top = polaroidsList.Polaroids[i].top;
                 var diffX = left - thisleft;
                 var diffY = top - thistop;
                 var distance = Math.sqrt(diffX * diffX + diffY * diffY);
@@ -90,54 +105,55 @@ function OurStory() {
                     // the closer the polaroid is to the active polaroid, the more it gets displaced
                     var amount = 4.0 * Math.pow(distance / 100, -0.5);
 
-                    var thisLeft = left + amount * directionX;
-                    var thisTop = top + amount * directionY;
-                    
-                    polaroids[i].style.left = "clamp(0%," + thisLeft + "%,100%)";
-                    polaroids[i].style.top = "clamp(0%," + thisTop + "%,100%)";
-        
-                    //var newLeft = amount * directionX;
-                    //var newTop = amount * directionY;
-                    //polaroids[i].style.transform = "translate(" + (10* polaroids[i].dataset.originalleft + newLeft) + "vw, " + 10 * newTop + "px)"; 
-                    
-                    var rotation = parseInt(polaroids[i].dataset.rotation) + 30 * (Math.random()-0.5);
-                    polaroids[i].children[0].style.transform = "rotate(" + rotation +  "deg) scale(1)";
+                    newLefts.push(clamp(0, left + amount * directionX, 100));
+                    newTops.push(clamp(0, top + amount * directionY, 100));
+                    newRotations.push(originalRotations[i] + 30 * (Math.random() - 0.5));
+                }
+                else {
+                    newLefts.push(left);
+                    newTops.push(top);
+                    newRotations.push(originalRotations[i]);
                 }
             }
         }
-        //thisPolaroid.children[0].style.transform = "rotate(0deg) scale(1.5)";
-        thisPolaroid.children[0].style.removeProperty("transform");
-        thisPolaroid.dataset.status = "hover";
+        let newActivePolaroid = {
+            index: number,
+            state: "hover"
+        };
+        updateActivePolaroid(p => newActivePolaroid);
+        updatePolaroidLefts(l => newLefts);
+        updatePolaroidTops(t => newTops);
+        updatePolaroidRotations(r => newRotations);
     }
     
     function polaroidLeave(number) {
-        var polaroids = document.getElementsByClassName("polaroid");
-        var polaroid = polaroids[number];
-        if (polaroid.dataset.status === "hover" || polaroid.dataset.status === "normal")
+        if (activePolaroid.index !== -1
+            && (activePolaroid.state === "hover" || activePolaroid.state === "normal"))
         {
             allPolaroidsToOriginalPosition(true);
-            polaroid.children[0].style.transform = "rotate(" + parseInt(polaroid.dataset.rotation) +  "deg) scale(1)";
-            polaroid.dataset.status = "normal";
         }
     }
 
     function allPolaroidsToOriginalPosition(includeRotation) {
-        var polaroids = document.getElementsByClassName("polaroid");
         $(".blackoverlay").fadeOut();
-        for (var i = 0; i < polaroids.length; i++)
-        {
-            if (includeRotation === true)
-            {
-                polaroids[i].children[0].style.transform = "rotate(" + parseInt(polaroids[i].dataset.rotation) +  "deg) scale(1)";
-        
-            }
-            polaroids[i].dataset.status = "normal";
-            polaroids[i].style.left = polaroids[i].dataset.originalleft + '%';
-            polaroids[i].style.top = polaroids[i].dataset.originaltop + '%';
-            
-            //polaroids[i].style.transform = "translate(" + polaroids[i].dataset.originalleft + "vw, " + 10 * polaroids[i].dataset.originaltop + "px)"; 
-                
+
+        let newLefts = [];
+        let newTops = [];
+        for (var i = 0; i < polaroidsList.Polaroids.length; i++) {
+            newLefts.push(polaroidsList.Polaroids[i].left);
+            newTops.push(polaroidsList.Polaroids[i].top);
         }
+
+        updatePolaroidLefts(l => newLefts);
+        updatePolaroidTops(t => newTops);
+        if (includeRotation) {
+            updatePolaroidRotations(r => originalRotations);
+        }
+        let newActivePolaroid = {
+            index: -1,
+            state: "normal"
+        };
+        updateActivePolaroid(p => newActivePolaroid);
     }
 
     return (

@@ -102,6 +102,7 @@ body {
       transition-timing-function: cubic-bezier(0.33,0.2,0.66,0.8); /* symmetrical, to work well with the opacity curve of the image/back */
       box-shadow: 10px 10px 5px rgba(0,0,0,0.5), 0 0 1px rgba(0,0,0,0.5);
   }
+
   
   .polaroid[data-status="zoomAndCentre"], .polaroid[data-status="zoomAndCentrePostFlip"], .polaroid[data-status="flip"] {
       left: 50%;
@@ -124,6 +125,10 @@ body {
   .polaroid[data-status="hover"] {
       z-index: 500;
   }
+
+  .polaroid[data-status="hover"] .polaroidcontainer {
+    transform: none;
+}
   
   .polaroid[data-status="hover"] > .polaroidcontainer {
       transform: scale(1.5);	
