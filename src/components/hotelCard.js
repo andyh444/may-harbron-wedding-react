@@ -4,7 +4,7 @@ import "./hotelCard.css"
 function HotelCard({linkUrl, imageUrl, name, noOfMiles}) {
 
     function getMilesString() {
-        if (noOfMiles == 1) {
+        if (noOfMiles === 1) {
             return "mile";
         }
         return "miles";

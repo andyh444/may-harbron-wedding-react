@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import WeddingInfo from "./pages/WeddingInfo";
 import RSVP from "./pages/RSVP";
 import OurStory from "./pages/OurStory";
+import ViewRSVPEntries from "./pages/ViewRSVPEntries";
 
 function App() {
     let location = useLocation();
@@ -59,6 +60,10 @@ function App() {
               <Route
                 exact path={["/RSVP", "/Evening/RSVP", "/RSVP/:name", "/Evening/RSVP/:name"]}
                 render={(props) => <RSVP props={props} isEvening={isEvening} />}
+              />
+              <Route
+                exact path={["/ViewRSVPEntries"]}
+                render={(props) => <ViewRSVPEntries />}
               />
             </Switch>
           </SwitchWithSlide>
