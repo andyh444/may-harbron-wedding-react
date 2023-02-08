@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.95f31c38.css",
-    "main.js": "/static/js/main.2e7d4218.js",
+    "main.css": "/static/css/main.ef8e480a.css",
+    "main.js": "/static/js/main.76d61fe3.js",
     "static/media/Eucalyptus.png": "/static/media/Eucalyptus.473b8b47abe413de0cb2.png",
     "static/media/main-image-mill.jpg": "/static/media/main-image-mill.0f8f5cc078d4133f0ddb.jpg",
     "static/media/Invitep1 day.jpg": "/static/media/Invitep1 day.46fce97c615e21d277e9.jpg",
@@ -12,7 +12,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.95f31c38.css",
-    "static/js/main.2e7d4218.js"
+    "static/css/main.ef8e480a.css",
+    "static/js/main.76d61fe3.js"
   ]
 }
