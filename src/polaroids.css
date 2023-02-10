@@ -110,10 +110,6 @@ body {
       position:absolute;
   }
 
-  /*.polaroidContainer[data-status="flip"] > .polaroidTranslator > .polaroidScaler > .polaroid {
-      transform: scale(-1, 1);
-  }*/
-  
   .polaroidContainer[data-status="flip"] .polaroidimagecontainer {
       opacity: 0;
   }

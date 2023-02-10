@@ -35,7 +35,7 @@ function HomePage({isEvening}) {
         <img className="InviteImage" alt="" src={isEvening ? eveningInvite : invite} />
         <div className="HomePageText">
             <p>Hello there</p>    
-            <p>If you are here then chances are you've just received one of these long awaited invitations. If not, I don't what you're doing here, but please leave.</p>
+            <p>If you are here then chances are you've just received one of these long awaited invitations. If not, I don't know what you're doing here, but please leave.</p>
             <p>We will be saying our vows on the 23rd July 2023, and wow that's {getNoOfDaysText()}</p>
             {
                 !isEvening && <p>If you're an evening guest, you need the <Link to="/Evening/Home">evening website</Link></p>
